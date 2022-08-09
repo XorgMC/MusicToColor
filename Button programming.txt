@@ -1,0 +1,8 @@
+6.1 - fixed bugs 6.0
+
+The buttons on the dynamic tab have become programmable.
+
+Set the program number you want to assign to any button.
+Hold shift and click on this button. The choice will be remembered and the number will be displayed on the button.
+
+Happy Carnival Day everyone.

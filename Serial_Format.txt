@@ -1,0 +1,36 @@
+-- ( Program messages ) --
+
+byte#  |  00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21    | 22      | 23    | 24     | 25  |
+dec    | 253 |                                                                                                                                      | 254 |
+hex    | fd  |																	    | fe  |
+descr  |START| a number?                                                                                         |ProgNum|SpeedGain|Brightn|Control?|END  |
+
+Answer: O [CR] K [CR] [CR][LF] (D0 9E D0 9A 0D 0A)
+
+
+-- ( Music Band Message ) --
+byte#  |  00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21    | 22 | 23    | 24     | 25  |
+dec    | 253 |                                                                                                                        |0       | 254 |
+hex    | fd  |                                                                                                                        |00      | fe  |
+descr  |START| band values                                                                                       |ProgNum|Gain|Brightn|Control?|END  |
+
+
+Program Numbers:
+232 = Rainbow
+233 = MIX
+234 = I-BEAM
+235 = Midland
+236 = Charm1 "MagicFrom"
+237 = Charm2 "MagicTo"
+238 = Fantasy1 "FeeryFrom"
+239 = Fantasy2 "FeeryTo"
+240 = Allure1 "AllureFrom"
+241 = Allure2 "AllureTo"
+242 = Tale "Skazka"
+243 = Level
+244 = I-BEAM10
+245 = Midland10
+246 = Charm
+247 = Rainbow10
+
+252 = Constant Color (0-47 colors, 48-238 + 239-255 white + varying brightness)

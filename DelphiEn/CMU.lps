@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="CMU.dpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="20" Y="24"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CMUru.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="935"/>
+        <CursorPos X="4" Y="952"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\unit\FFTBase.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="254"/>
+        <CursorPos X="26" Y="274"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\unit\FFTFilterConst.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="497"/>
+        <CursorPos X="48" Y="520"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\unit\SerialLink.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="245"/>
+        <CursorPos X="40" Y="268"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\inc\systemh.inc"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="1323"/>
+        <CursorPos X="11" Y="1334"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uos.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8293"/>
+        <CursorPos Y="8304"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\winunits-base\src\mmsystem.pp"/>
+        <UnitName Value="MMSystem"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="50"/>
+        <CursorPos X="5" Y="61"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2108"/>
+        <CursorPos X="17" Y="2110"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\win\wininc\base.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="270"/>
+        <CursorPos X="6" Y="282"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\win\wininc\messages.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1152"/>
+        <CursorPos X="6" Y="1163"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\win\wininc\struct.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8421"/>
+        <CursorPos X="6" Y="8433"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\components\buildintf\packageintf.pas"/>
+        <UnitName Value="PackageIntf"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="9"/>
+        <CursorPos Y="21"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="548" Column="3" TopLine="544"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="549" Column="3" TopLine="545"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="548" Column="3" TopLine="544"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="549" Column="3" TopLine="549"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="548" Column="3" TopLine="548"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="547" Column="3" TopLine="547"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="546" Column="3" TopLine="546"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="545" Column="3" TopLine="545"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="544" Column="3" TopLine="544"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="543" Column="3" TopLine="543"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="542" Column="3" TopLine="542"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="541" Column="3" TopLine="541"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="542" Column="3" TopLine="542"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="543" Column="3" TopLine="543"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="542" Column="3" TopLine="542"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="543" Column="3" TopLine="543"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="544" Column="3" TopLine="544"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="546" Column="3" TopLine="546"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="545" Column="3" TopLine="545"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="41" Column="49" TopLine="28"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="884" Column="63" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="757" Column="50" TopLine="755"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="759" Column="50" TopLine="757"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="764" Column="50" TopLine="757"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="891" Column="59" TopLine="889"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="959" Column="32" TopLine="941"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="953" Column="32" TopLine="930"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="952" Column="4" TopLine="935"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="953" Column="4" TopLine="936"/>
+      </Position>
+      <Position>
+        <Filename Value="CMUru.pas"/>
+        <Caret Line="952" Column="4" TopLine="935"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

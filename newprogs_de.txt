@@ -1,0 +1,31 @@
+--( Charm2 )--
+"langsame Lichtorgel"
+Helligkeit = durchschnittliche Lautstärke
+Farbe = Stärkste Tonhöhe
+Helligkeitsregler = Reaktionsgeschwindigkeit Farbe (weniger=schneller)
+
+--( Fantasy1 )--
+"Bass-Takt-Blinker"
+Helligkeit = Bass-Spitzen
+Farbe = zufällig/der Reihe nach nahe Nullpunkt
+Helligkeitsregler:
+	0-126: Farbe der Reihe nach, 126-255: Farbe zufällig
+	im jeweiligen Bereich: Peak-Verstärkung
+
+--( Fantasy2 )--
+"schnelle Lichtorgel"
+Helligkeit = Spitzenlautstärke gesamt
+Farbe = Stärkste Tonhöhe
+Helligkeit = Peak-Verstärkung
+
+
+--( Allure1 )--
+"Regenbogen extra"
+Steigt die "Durchschnitts"-Tonhöhenlautstärke über 200 leuchten
+alle Farbbänder kurzzeitig voll auf
+
+--( Allure2 )--
+"Regenbogen-Strobo"
+Erreicht das tiefste Band Maximum blitzen alle LEDs kurz
+"voll" weiß auf
+

@@ -1,0 +1,108 @@
+CMU.lpi Note: Added defines -dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL in custom options
+ Progress: Alle Unit-Dateien gefunden
+CMU.dpr(1,13) Note: Added MODE Delphi syntax modifier after unit name.
+ : 
+ : *** Wandle zum Projekt/Package gehörende Unit-Dateien um ***
+CMUru.pas Note: Kodierung von cp1252 zu UTF-8 geändert
+CMUru.pas(13,12) Note: Zeichenschreibweise von Unit "fftbase" auf "FFTBase" korrigiert.
+CMUru.pas(13,21) Note: Zeichenschreibweise von Unit "fftfilterconst" auf "FFTFilterConst" korrigiert.
+CMUru.pas Note: Unit "jpeg" aus dem uses-Abschnitt entfernt.
+CMUru.pas Note: Unit "ShellApi" aus dem uses-Abschnitt entfernt.
+CMUru.pas Note: Unit "Windows" mit "LCLIntf, LCLType, LMessages" im uses Abschnitt ersetzt.
+CMUru.pas(1,12) Note: Added MODE Delphi syntax modifier after unit name.
+CMUru.pas(873,13) Note: Aufruf ShellExecute(Application.Handle,'open','https://mail.ru','juraspb@mail.ru',nil,0); mit OpenURL('https://mail.ru'); { *Konvertiert von ShellExecute* } ersetzt
+CMUru.pas(872,13) Note: Aufruf ShellExecute(Application.Handle,'open','https://money.yandex.ru/to/41001598825682',nil,nil,0); mit OpenURL('https://money.yandex.ru/to/41001598825682'); { *Konvertiert von ShellExecute* } ersetzt
+CMUru.pas(871,13) Note: Aufruf ShellExecute(Application.Handle,'open','https://www.webmoney.ru/',nil,nil,0); mit OpenURL('https://www.webmoney.ru/'); { *Konvertiert von ShellExecute* } ersetzt
+CMUru.pas(870,13) Note: Aufruf ShellExecute(Application.Handle,'open','https://qiwi.com/payment/form/99',nil,nil,0); mit OpenURL('https://qiwi.com/payment/form/99'); { *Konvertiert von ShellExecute* } ersetzt
+CMUru.pas(869,13) Note: Aufruf ShellExecute(Application.Handle,'open','https://paypal.me/Petrukhanov',nil,nil,0); mit OpenURL('https://paypal.me/Petrukhanov'); { *Konvertiert von ShellExecute* } ersetzt
+CMUru.pas(861,3) Note: Aufruf ShellExecute(Application.Handle,'open','https://1drv.ms/u/s!AnhvZp98C-GCo2SBgxaOUuz-ycCR',nil,nil,0); mit OpenURL('https://1drv.ms/u/s!AnhvZp98C-GCo2SBgxaOUuz-ycCR'); { *Konvertiert von ShellExecute* } ersetzt
+FFTBase.pas Note: Kodierung von cp1252 zu UTF-8 geändert
+FFTBase.pas Note: Unit "Windows" mit "LCLIntf, LCLType, LMessages" im uses Abschnitt ersetzt.
+FFTBase.pas(1,14) Note: Added MODE Delphi syntax modifier after unit name.
+FFTFilterConst.pas Note: Kodierung von cp1252 zu UTF-8 geändert
+FFTFilterConst.pas Note: Unit "Windows" mit "LCLIntf, LCLType, LMessages" im uses Abschnitt ersetzt.
+FFTFilterConst.pas(1,21) Note: Added MODE Delphi syntax modifier after unit name.
+SerialLink.pas Note: Kodierung von cp1252 zu UTF-8 geändert
+SerialLink.pas Note: Unit "Windows" mit "LCLIntf, LCLType, LMessages" im uses Abschnitt ersetzt.
+SerialLink.pas(1,17) Note: Added MODE Delphi syntax modifier after unit name.
+SerialLink.pas(136,24) Note: Aufruf CloseHandle(FHandle); mit FileClose(FHandle); { *Konvertiert von CloseHandle* } ersetzt
+SerialLink.pas(70,5) Note: Aufruf CloseHandle(FHandle); mit FileClose(FHandle); { *Konvertiert von CloseHandle* } ersetzt
+ : 
+ : *** Repariere verwendete Units und Formulardateien ... ***
+CMUru.pas Note: Eigenschaft "ThumbLength" entfernt.
+CMUru.pas Note: Eigenschaft "ThumbLength" entfernt.
+CMUru.pas Note: Eigenschaft "TextHeight" entfernt.
+CMUru.pas Note: Eigenschaft "OldCreateOrder" entfernt.
+CMUru.pas Note: Eigenschaft "Icon.Data" entfernt.
+CMUru.pas Note: Changed Top coord of TTrackBar from "44" to "42" inside TPanel.
+CMUru.pas Note: Changed Left coord of TTrackBar from "12" to "10" inside TPanel.
+CMUru.pas Note: Changed Top coord of TTrackBar from "12" to "10" inside TPanel.
+CMUru.pas Note: Changed Left coord of TTrackBar from "12" to "10" inside TPanel.
+CMUru.pas Note: Changed Top coord of TLabel from "46" to "44" inside TPanel.
+CMUru.pas Note: Changed Left coord of TLabel from "261" to "259" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "8" to "6" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "296" to "294" inside TPanel.
+CMUru.pas Note: Changed Top coord of TLabel from "14" to "12" inside TPanel.
+CMUru.pas Note: Changed Left coord of TLabel from "261" to "259" inside TPanel.
+CMUru.pas Note: Changed Top coord of TCheckBox from "40" to "38" inside TPanel.
+CMUru.pas Note: Changed Left coord of TCheckBox from "112" to "110" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpinEdit from "32" to "30" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpinEdit from "62" to "60" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpinEdit from "32" to "30" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpinEdit from "20" to "18" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "174" to "172" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "174" to "172" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "8" to "6" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "148" to "146" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "148" to "146" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "8" to "6" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "122" to "120" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "122" to "120" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "8" to "6" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "96" to "94" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "74" to "72" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "96" to "94" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "8" to "6" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "70" to "68" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "74" to "72" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "70" to "68" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "8" to "6" inside TPanel.
+CMUru.pas Note: Changed Top coord of TLabel from "8" to "6" inside TPanel.
+CMUru.pas Note: Changed Left coord of TLabel from "12" to "10" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "186" to "184" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "160" to "158" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "160" to "158" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "134" to "132" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "134" to "132" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "108" to "106" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "108" to "106" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "82" to "80" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "82" to "80" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "56" to "54" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "186" to "184" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "56" to "54" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "30" to "28" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "30" to "28" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "4" to "2" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "73" to "71" inside TPanel.
+CMUru.pas Note: Changed Top coord of TSpeedButton from "4" to "2" inside TPanel.
+CMUru.pas Note: Changed Left coord of TSpeedButton from "6" to "4" inside TPanel.
+ Progress: Konvertierung benötigte: 00:00:16
+ : Umwandlung ist fertig.
