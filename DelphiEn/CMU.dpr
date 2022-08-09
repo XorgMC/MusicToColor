@@ -1,6 +1,14 @@
 program CMU;
 
+{$IFDEF FPC}
+  {$MODE Delphi}
+{$ENDIF}
+
 uses
+{$IFnDEF FPC}
+{$ELSE}
+  Interfaces,
+{$ENDIF}
   Forms,
   CMUru in 'CMUru.pas' {Form1},
   FFTBase in '..\unit\FFTBase.pas',

@@ -1,6 +1,27 @@
 unit CMUru;
 
+{$IFDEF FPC}
+  {$MODE Delphi}
+{$ENDIF}
+
 (*
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+  Copyright 2022, Fabian Schillig
+  Email: xorgmc@gmail.com
+
+  Original by:
   Copyright 2018, Petrukhanov Yuriy
   Email:juraspb@mail.ru
   Home: https://github.com/juraspb/MusictoColor
@@ -9,10 +30,16 @@ unit CMUru;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, fftbase, fftfilterconst, MMSystem, StdCtrls, ExtCtrls, Buttons,
-  SerialLink, ColorGrd, ComCtrls, Spin, Registry, ShellApi, Menus,
-  IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, jpeg;
+{$IFnDEF FPC}
+  jpeg, ShellApi, ColorGrd,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
+  ShellApi,
+  IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, Windows,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, FFTBase, FFTFilterConst, MMSystem, StdCtrls, ExtCtrls, Buttons,
+  SerialLink, ComCtrls, Spin, Registry, Menus;
 
 Const
     BufSize = 1024;
@@ -28,20 +55,20 @@ type
     Channels: integer;
     Rate: integer;
     Bits: integer;
-    mode: DWORD;          // код режима работы
-    descr: string[32];    // словесное описание
+    mode: DWORD;          // Operating Mode Code
+    descr: string[32];    // Description
 end;
 
 const
    colorTab: array [0..95] of TColor=(
-      $FF0000,$FF1100,$FF2200,$FF3300,$FF4400,$FF5500,$FF6600,$FF7700,$FF8800,$FF9900,$FFAA00,$FFBB00,$FFCC00,$FFDD00,$FFEE00,$FFFF00,  //красный - жёлтый
-      $FFFF00,$EEFF00,$DDFF00,$CCFF00,$BBFF00,$AAFF00,$99FF00,$88FF00,$77FF00,$66FF00,$55FF00,$44FF00,$33FF00,$22FF00,$11FF00,$00FF00,  //жёлтый — зелёный
-      $00FF00,$00FF11,$00FF22,$00FF33,$00FF44,$00FF55,$00FF66,$00FF77,$00FF88,$00FF99,$00FFAA,$00FFBB,$00FFCC,$00FFDD,$00FFEE,$00FFFF,  //зелёный — циан (голубой)
-      $00FFFF,$00EEFF,$00DDFF,$00CCFF,$00BBFF,$00AAFF,$0099FF,$0088FF,$0077FF,$0066FF,$0055FF,$0044FF,$0033FF,$0022FF,$0011FF,$0000FF,  //голубой — синий
-      $0000FF,$1100FF,$2200FF,$3300FF,$4400FF,$5500FF,$6600FF,$7700FF,$8800FF,$9900FF,$AA00FF,$BB00FF,$CC00FF,$DD00FF,$EE00FF,$FF00FF,  //синий — пурпур (маджента)
-      $FF00FF,$FF00EE,$FF00DD,$FF00CC,$FF00BB,$FF00AA,$FF0099,$FF0088,$FF0077,$FF0066,$FF0055,$FF0044,$FF0033,$FF0022,$FF0011,$FF0000); //маджента — красный
+      $FF0000,$FF1100,$FF2200,$FF3300,$FF4400,$FF5500,$FF6600,$FF7700,$FF8800,$FF9900,$FFAA00,$FFBB00,$FFCC00,$FFDD00,$FFEE00,$FFFF00,  //ГЄГ°Г Г±Г­Г»Г© - Г¦ВёГ«ГІГ»Г©
+      $FFFF00,$EEFF00,$DDFF00,$CCFF00,$BBFF00,$AAFF00,$99FF00,$88FF00,$77FF00,$66FF00,$55FF00,$44FF00,$33FF00,$22FF00,$11FF00,$00FF00,  //Г¦ВёГ«ГІГ»Г© вЂ” Г§ГҐГ«ВёГ­Г»Г©
+      $00FF00,$00FF11,$00FF22,$00FF33,$00FF44,$00FF55,$00FF66,$00FF77,$00FF88,$00FF99,$00FFAA,$00FFBB,$00FFCC,$00FFDD,$00FFEE,$00FFFF,  //Г§ГҐГ«ВёГ­Г»Г© вЂ” Г¶ГЁГ Г­ (ГЈГ®Г«ГіГЎГ®Г©)
+      $00FFFF,$00EEFF,$00DDFF,$00CCFF,$00BBFF,$00AAFF,$0099FF,$0088FF,$0077FF,$0066FF,$0055FF,$0044FF,$0033FF,$0022FF,$0011FF,$0000FF,  //ГЈГ®Г«ГіГЎГ®Г© вЂ” Г±ГЁГ­ГЁГ©
+      $0000FF,$1100FF,$2200FF,$3300FF,$4400FF,$5500FF,$6600FF,$7700FF,$8800FF,$9900FF,$AA00FF,$BB00FF,$CC00FF,$DD00FF,$EE00FF,$FF00FF,  //Г±ГЁГ­ГЁГ© вЂ” ГЇГіГ°ГЇГіГ° (Г¬Г Г¤Г¦ГҐГ­ГІГ )
+      $FF00FF,$FF00EE,$FF00DD,$FF00CC,$FF00BB,$FF00AA,$FF0099,$FF0088,$FF0077,$FF0066,$FF0055,$FF0044,$FF0033,$FF0022,$FF0011,$FF0000); //Г¬Г Г¤Г¦ГҐГ­ГІГ  вЂ” ГЄГ°Г Г±Г­Г»Г©
 
-   Garmoniks : array [0..19] of Integer =(2,3,4,5,7,9,11,13,15,17,19,22,25,28,32,36,44,54,66,80);
+   Harmonics : array [0..19] of Integer =(2,3,4,5,7,9,11,13,15,17,19,22,25,28,32,36,44,54,66,80);
 
    modes: array [1..12] of TModeDescr=((Channels: 1; Rate: 11025; Bits: 8; mode: WAVE_FORMAT_1M08; descr:'11.025 kHz, mono, 8-bit'),
                                        (Channels: 1; Rate: 11025; Bits: 16; mode: WAVE_FORMAT_1M16; descr:'11.025 kHz, mono, 16-bit'),
@@ -57,14 +84,24 @@ const
                                        (Channels: 2; Rate: 44100; Bits: 16; mode: WAVE_FORMAT_4S16; descr:'44.1 kHz, stereo, 16-bit'));
 
 type
+    TBuf16 = array[0..BufSize * chan - 1] of smallint;
+    PBuf16 = ^TBuf16;
     TData16 = array [0..BufSize * chan - 1] of smallint;
     PData16 = ^TData16;
     TPointArr = array [0..BufSize * chan - 1] of TPoint;
     PPointArr = ^TPointArr;
     PDWORDArray = array of DWORD;
 
+{ TForm1 }
+
 TForm1 = class(TForm)
+     MainMenu1: TMainMenu;
+     origAuthorName: TLabel;
+     Label2: TLabel;
+     authorLbl: TLabel;
+     githubLink: TLabel;
     pgc1: TPageControl;
+    TrayIcon1: TTrayIcon;
     ts1: TTabSheet;
     ts2: TTabSheet;
     pnl4: TPanel;
@@ -86,8 +123,6 @@ TForm1 = class(TForm)
     lbl5: TLabel;
     lbl6: TLabel;
     btn19: TButton;
-    lbl8: TLabel;
-    lbl9: TLabel;
     btn12: TSpeedButton;
     ts4: TTabSheet;
     lbl3: TLabel;
@@ -104,8 +139,6 @@ TForm1 = class(TForm)
     btnD1: TSpeedButton;
     btnD2: TSpeedButton;
     btnD3: TSpeedButton;
-    lbl13: TLabel;
-    lbl12: TLabel;
     ts5: TTabSheet;
     img3: TImage;
     btn11: TSpeedButton;
@@ -115,11 +148,8 @@ TForm1 = class(TForm)
     btn14: TSpeedButton;
     btn15: TSpeedButton;
     btn2: TSpeedButton;
-    lbl14: TLabel;
+    origAuthorLbl: TLabel;
     lbl15: TLabel;
-    lbl16: TLabel;
-    lbl17: TLabel;
-    lbl19: TLabel;
     N7: TMenuItem;
     trckbr2: TTrackBar;
     lbl18: TLabel;
@@ -146,6 +176,10 @@ TForm1 = class(TForm)
     procedure ComboBox1Change(Sender: TObject);
     procedure cbb1Change(Sender: TObject);
     procedure btnD1Click(Sender: TObject);
+    procedure githubLinkClick(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
+    procedure TrayIcon1Click(Sender: TObject);
+    procedure TrayIcon1DblClick(Sender: TObject);
     procedure trckbr1Change(Sender: TObject);
     procedure img2MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -160,7 +194,6 @@ TForm1 = class(TForm)
     procedure chk3Click(Sender: TObject);
    protected
      procedure ControlWindow(Var Msg:TMessage); message WM_SYSCOMMAND;
-     procedure IconMouse(var Msg:TMessage); message WM_USER+1;
    private
     { Private declarations }
      applicationsDir: string;
@@ -198,8 +231,7 @@ TForm1 = class(TForm)
      state:Integer;
      alpha:Integer;
      brightness,rotate:byte;
-     procedure Ic(n:Integer;Icon:TIcon);
-     procedure OnWaveIn(var Msg: TMessage); message MM_WIM_DATA;
+     procedure OnWaveInLCL(lParam: LParam);
      procedure setBandPass;
      procedure programRun(number,val,br,rot:byte);
      procedure rcvAnswer;
@@ -215,6 +247,7 @@ TForm1 = class(TForm)
 
 var
   Form1: TForm1;
+  PrevWndProc: WNDPROC;
   p:                     PPointArr;
   ready:                 boolean = false;
   mmfree:                boolean = false;
@@ -223,10 +256,27 @@ var
   data16:                PData16;
   WaveIn:                hWaveIn;
   BufHead:               TWaveHdr;
+  PlayerIndex1:          cardinal;
+  In1Index, out1index:   integer;
+  thebuffer:             array of smallint;
 
 implementation
 
-{$R *.dfm}
+{$IFnDEF FPC}
+  {$R *.dfm}
+{$ELSE}
+  {$R *.lfm}
+{$ENDIF}
+
+function WndCallback(Ahwnd: HWND; uMsg: UINT; wParam: WParam; lParam: LParam):LRESULT; stdcall;
+begin
+  result := 1;
+  case uMsg of
+    mm_wim_data:  Form1.OnWaveInLCL(lParam);
+  end; {case}
+   result := CallWindowProc(PrevWndProc,Ahwnd, uMsg, WParam, LParam);
+end;
+
 procedure TForm1.OnMinimizeProc(Sender:TObject);
 Begin
  PostMessage(Handle,WM_SYSCOMMAND,SC_MINIMIZE,0);
@@ -236,68 +286,26 @@ procedure TForm1.ControlWindow(Var Msg:TMessage);
 Begin
  IF Msg.WParam=SC_MINIMIZE then
   Begin
-   Ic(1,Application.Icon);  //
-   ShowWindow(Handle,SW_HIDE);  //
-   ShowWindow(Application.Handle,SW_HIDE);  //
+   //TrayIcon1.Show;
+   //Form1.Hide; //TODO: Hide main window on minimize (show not working)
  End else inherited;
 End;
 
-procedure TForm1.Ic(n:Integer;Icon:TIcon);
-Var Nim:TNotifyIconData;
-begin
- With Nim do
-  Begin
-   cbSize:=SizeOf(Nim);
-   Wnd:=Form1.Handle;
-   uID:=1;
-   uFlags:=NIF_ICON or NIF_MESSAGE or NIF_TIP;
-   hicon:=Icon.Handle;
-   uCallbackMessage:=wm_user+1;
-   szTip:='Цветомузыка';
-  End;
- Case n OF
-  1: Shell_NotifyIcon(Nim_Add,@Nim);
-  2: Shell_NotifyIcon(Nim_Delete,@Nim);
-  3: Shell_NotifyIcon(Nim_Modify,@Nim);
- End;
-end;
-
-procedure TForm1.IconMouse(var Msg:TMessage);
-Var p:tpoint;
-begin
- GetCursorPos(p); 
- Case Msg.LParam OF
-//  WM_LBUTTONUP,WM_LBUTTONDBLCLK:
-  WM_LBUTTONDBLCLK:
-   Begin
-    Ic(2,Application.Icon);
-    ShowWindow(Application.Handle,SW_SHOW);
-    ShowWindow(Handle,SW_SHOW);
-   End;
-  WM_RBUTTONUP:
-   Begin
-    SetForegroundWindow(Handle);
-    pm1.Popup(p.X,p.Y);
-    PostMessage(Handle,WM_NULL,0,0);
-   end;
- End;
-end;
-
 procedure TForm1.DrawFFT_BP;
-var i,j,k,zmax,nGarmoniks: integer;
+var i,j,k,zmax,nHarmonics: integer;
     cl:TColor;
     r,g,b:Byte;
 begin
   Inc(ffCount);
   if ffCount>ffLen-1 then ffCount:=0;
-  // не равномерно по октавам
+  // not uniform across octaves
   i:=1;
   zmax:=0;
   for j:=0 to nBandPass-1 do
    begin
-    nGarmoniks:=Garmoniks[j];
+    nHarmonics:=Harmonics[j];
     clMagnBuf[j]:=0;
-    for k:=0 to nGarmoniks-1 do
+    for k:=0 to nHarmonics-1 do
      begin
        clMagnBuf[j]:=clMagnBuf[j]+fftDataBuf[i]+fftDataBuf[BufSize-i];
        inc(i);
@@ -377,22 +385,22 @@ begin
   //Set:
   //N
   //2^X=N
-  //False – FFT; True – iFFT
+  //False вЂ“ FFT; True вЂ“ iFFT
   //Window: 0, 1, 2, 3, 4
   fftb.FFT(Pointer(fFFTComplBuf), BufSize, fftSq, False, 0);
   for i:=0 to BufSize-1 do fftDataBuf[i] := Round(fFFTComplBuf[i].Re / gain);
   fftb.Free;
-  FreeMem(fFFTComplBuf, BufSize*SizeOf(TComplex)); //Освобождение памяти выделенной под массив
+  FreeMem(fFFTComplBuf, BufSize*SizeOf(TComplex)); //Freeing memory allocated for array
 end;
 
-procedure TForm1.OnWaveIn;
+procedure TForm1.OnWaveInLCL(lParam: LParam);
 var i: integer;
 begin
-  Data16 := PData16(PWaveHdr(Msg.lParam)^.lpData);
+  Data16 := PData16(PWaveHdr(lParam)^.lpData);
   for i := 0 to BufSize*chan-1 do inDataBuf[i]:= Data16^[i];
   MakeFFT();
   DrawFFT_BP();
-  if ready then WaveInAddBuffer(WaveIn, PWaveHdr(Msg.lParam), SizeOf(TWaveHdr))
+  if ready then WaveInAddBuffer(WaveIn, PWaveHdr(lParam), SizeOf(TWaveHdr))
            else mmfree := true;
 end;
 
@@ -537,8 +545,10 @@ procedure TForm1.FormCreate(Sender: TObject);
 var i,x,y,j:Integer;
     cl:TColor;
 begin
+  PrevWndProc := Windows.WNDPROC(SetWindowLong(Self.Handle,GWL_WNDPROC,PtrInt(@WndCallback)));
   GetDir(0,applicationsDir);
   chDir(applicationsDir);
+
   sl:=TStringList.Create;
   Application.onMinimize:=OnMinimizeProc;
   eqBmp:=TBitmap.Create;
@@ -670,7 +680,7 @@ begin
       cbSize := 0;
     end;
   audioDevices:=cbb1.ItemIndex;
-//  WaveInOpen(Addr(WaveIn), WAVE_MAPPER, addr(header), Form1.Handle, 0, CALLBACK_WINDOW);  // Подключение к устройству ввода выбранному системой WAVE_MAPPER
+//  WaveInOpen(Addr(WaveIn), WAVE_MAPPER, addr(header), Form1.Handle, 0, CALLBACK_WINDOW);  // Connecting to an input device selected by the system WAVE_MAPPER
   WaveInOpen(Addr(WaveIn), audioDevices, addr(header), Form1.Handle, 0, CALLBACK_WINDOW);
   BufLen := header.nBlockAlign * BufSize;
   hBuf := GlobalAlloc(GMEM_MOVEABLE and GMEM_SHARE, BufLen);
@@ -742,6 +752,26 @@ begin
        Sleep(200);
        trckbr1.Position:=param[prog];
     end;
+end;
+
+procedure TForm1.githubLinkClick(Sender: TObject);
+begin
+  OpenURL('https://github.com/XorgMC/MusicToColor');
+end;
+
+procedure TForm1.Label2Click(Sender: TObject);
+begin
+  OpenURL('https://github.com/juraspb/MusicToColor');
+end;
+
+procedure TForm1.TrayIcon1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.TrayIcon1DblClick(Sender: TObject);
+begin
+ //Self.Show;
 end;
 
 procedure TForm1.programRun(number,val,br,rot:byte);
@@ -858,7 +888,7 @@ end;
 
 procedure TForm1.btn19Click(Sender: TObject);
 begin
-  ShellExecute(Application.Handle,'open','https://1drv.ms/u/s!AnhvZp98C-GCo2SBgxaOUuz-ycCR',nil,nil,0);
+  OpenURL('https://github.com/XorgMC/MusicToColor/releases'); { *Konvertiert von ShellExecute* }
 end;
 
 procedure TForm1.lbl8Click(Sender: TObject);
@@ -866,11 +896,11 @@ begin
    with Sender as TLabel do
     begin
       case Tag of
-         0: ShellExecute(Application.Handle,'open','https://paypal.me/Petrukhanov',nil,nil,0);
-         1: ShellExecute(Application.Handle,'open','https://qiwi.com/payment/form/99',nil,nil,0);
-         2: ShellExecute(Application.Handle,'open','https://www.webmoney.ru/',nil,nil,0);
-         3: ShellExecute(Application.Handle,'open','https://money.yandex.ru/to/41001598825682',nil,nil,0);
-         4: ShellExecute(Application.Handle,'open','https://mail.ru','juraspb@mail.ru',nil,0);
+         0: OpenURL('https://paypal.me/Petrukhanov'); { *Konvertiert von ShellExecute* }
+         1: OpenURL('https://qiwi.com/payment/form/99'); { *Konvertiert von ShellExecute* }
+         2: OpenURL('https://www.webmoney.ru/'); { *Konvertiert von ShellExecute* }
+         3: OpenURL('https://money.yandex.ru/to/41001598825682'); { *Konvertiert von ShellExecute* }
+         4: OpenURL('https://mail.ru'); { *Konvertiert von ShellExecute* }
        end;
      end;
 end;
